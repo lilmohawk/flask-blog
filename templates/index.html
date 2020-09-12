@@ -1,0 +1,60 @@
+{% extends 'tem.html'%}
+
+{%block body%}
+
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Flask Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01"
+        aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Post</a>
+            </li>
+
+            <form class="form-inline my-2 my-md-0">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </form>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-1">Flask Blog</h1>
+        <small>Developed and Designed By: Marcus Campbell</small>
+    </div>
+</div>
+
+<div class="container">
+
+    <form class="form-group" action="/post" method="POST">
+        Title:
+        <input class="form-control rounded-0" type="text" name="title" id="title">
+        <br>
+        Author:
+        <input class="form-control rounded-0" type="text" name="author" id="author">
+        <br>
+        Content:
+        <textarea class="form-control rounded-0" name="content" id="content" rows="6"></textarea>
+        <br>
+        <input class="btn-primary" type="submit" value="Submit">
+    </form>
+    <hr>
+
+    {%for x in x%}
+    <h1>{{x.title}}</h1>
+    <small><i>Written by: {{x.author}}</i></small>
+    <br>
+    <p>{{x.content}}</p> 
+    <a class="btn btn-danger" href="post/delete/{{x.id}}">Delete</a>
+    <hr>
+    {%endfor%}
+
+</div>
+{%endblock%}
