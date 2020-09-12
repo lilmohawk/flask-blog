@@ -33,7 +33,7 @@
 
 <div class="container">
 
-    <form class="form-group" action="/post" method="POST">
+    <form class="form-group" action="/" method="POST">
         Title:
         <input class="form-control rounded-0" type="text" name="title" id="title">
         <br>
@@ -52,7 +52,7 @@
     <small><i>Written by: {{x.author}}</i></small>
     <br>
     <p>{{x.content}}</p> 
-    <a class="btn btn-danger" href="post/delete/{{x.id}}">Delete</a>
+    <a class="btn btn-danger" href="/delete/{{x.id}}">Delete</a>
     <hr>
     {%endfor%}
 

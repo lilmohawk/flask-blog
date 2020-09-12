@@ -11,7 +11,7 @@ class BlogPost(db.Model):
     author = db.Column(db.String(25), nullable=False, default="N/A")
     content = db.Column(db.Text, nullable = False)
 
-@app.route('/post', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def post():
     if request.method == 'POST':
         title = request.form["title"]
@@ -22,18 +22,18 @@ def post():
         db.session.add(NewPost)
         db.session.commit()
 
-        return redirect("/post")
+        return redirect("/")
     else:
         post = BlogPost.query.all()
         return render_template("index.html", x = post)
 
-@app.route("/post/delete/<int:id>")
+@app.route("/delete/<int:id>")
 def delete(id):
     postDel = BlogPost.query.get_or_404(id)
     db.session.delete(postDel)
     db.session.commit()
 
-    return redirect("/post")
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True)
