@@ -32,7 +32,6 @@ def delete(id):
     postDel = BlogPost.query.get_or_404(id)
     db.session.delete(postDel)
     db.session.commit()
-
     return redirect("/")
 
 if __name__ == "__main__":
